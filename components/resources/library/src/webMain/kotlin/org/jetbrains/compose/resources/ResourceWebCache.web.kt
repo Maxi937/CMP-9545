@@ -96,7 +96,7 @@ private fun supportsCacheApi(): Boolean = js("Boolean(window.caches)")
 // https://developer.mozilla.org/en-US/docs/Web/API/Location/protocol
 // Protocols like "vscode-webview:" don't support CacheStorage
 private fun isCacheableProtocol(): Boolean {
-    return window.location.protocol == "https:"
+    return window.location.protocol.startsWith("http")
 }
 
 // Promise.await is not yet available in webMain: https://github.com/Kotlin/kotlinx.coroutines/issues/4544
