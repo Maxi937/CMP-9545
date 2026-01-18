@@ -93,8 +93,8 @@ internal object ResourceWebCache {
 // Supported only in secure contexts (HTTPS or localhost)
 private fun supportsCacheApi(): Boolean = js("Boolean(window.caches)")
 
-// https://developer.mozilla.org/en-US/docs/Web/API/Location/protocol
-// Protocols like "vscode-webview:" don't support CacheStorage
+// https://developer.mozilla.org/en-US/docs/Web/API/Cache/put
+// Ensure the protocol of the request is http / https - edge cases like "vscode-webview:" are not supported by CacheStorage
 private fun isCacheableProtocol(): Boolean {
     return window.location.protocol.startsWith("http")
 }
